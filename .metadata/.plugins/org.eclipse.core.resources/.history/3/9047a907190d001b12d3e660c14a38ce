@@ -1,0 +1,55 @@
+package com.rk.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) 
+			throws Exception {
+		
+		auth.inMemoryAuthentication().withUser("SAM").password("{noop}SAM").authorities("STUDENT");
+		auth.inMemoryAuthentication().withUser("KHAN").password("{noop}KHAN").authorities("EMPLOYEE");
+		auth.inMemoryAuthentication().withUser("RAM").password("{noop}RAM").authorities("ADMIN");
+		
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http) 
+			throws Exception {
+	
+		//authorize URLs
+		http.authorizeRequests()
+		.antMatchers("/welcome").permitAll()
+		
+		.antMatchers("/emp").hasAuthority("EMPLOYEE")
+		.antMatchers("/adm").hasAuthority("ADMIN")
+		.antMatchers("/std").hasAnyAuthority("STUDENT","ADMIN")
+		
+		.anyRequest().authenticated()
+		
+		//Form details
+		.and()
+		.formLogin()
+		.defaultSuccessUrl("/common", true)
+		
+		//Logout
+		.and()
+		.logout()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
+		
+		//Wrong URL access with different ROLE
+		.and()
+		.exceptionHandling()
+		.accessDeniedPage("/denied")
+		;
+	}
+
+}

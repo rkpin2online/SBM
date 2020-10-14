@@ -1,0 +1,7 @@
+package com.rk.config;
+
+import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
+
+public class SecurityConfig implements WebSecurityConfigurer<T> {
+
+}

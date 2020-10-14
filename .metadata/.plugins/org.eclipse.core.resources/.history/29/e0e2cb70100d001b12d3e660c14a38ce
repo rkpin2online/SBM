@@ -1,0 +1,45 @@
+package com.rk.config;
+
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	//Authentication
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("RAM").password("{noop}SITA").authorities("ADIPURUS");
+		auth.inMemoryAuthentication().withUser("KRISHNA").password("{noop}RADHA").authorities("SUPRIMGOD");
+		auth.inMemoryAuthentication().withUser("SIVA").password("{noop}PARVATI").authorities("ADIUGI");
+	}
+	
+	//Authentication
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		
+		//Authorize URL
+		http.authorizeRequests()
+		.antMatchers("/home").permitAll()
+		.antMatchers("/ap").hasAuthority("ADIPURUS")
+		.antMatchers("/sg").hasAuthority("SUPRIMGOD")
+		.antMatchers("/au").hasAuthority("ADIUGI")
+		.anyRequest().authenticated()
+		
+		//Display Form Created by Spring boot
+		.and()
+		.formLogin()
+		.defaultSuccessUrl("/common",true)
+		
+		//Logout Enabled
+		.and()
+		.logout()
+		
+		//Access Denied Exception- For Wrong role Access
+		.and()
+		.exceptionHandling()
+		.accessDeniedPage("/denied")
+		;
+	}
+
+}

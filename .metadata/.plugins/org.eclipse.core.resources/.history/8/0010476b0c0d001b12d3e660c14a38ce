@@ -1,0 +1,4 @@
+# default is user
+spring.security.user.name=Pintu  
+#pwd generated and printed at console/log
+spring.security.user.password=rk

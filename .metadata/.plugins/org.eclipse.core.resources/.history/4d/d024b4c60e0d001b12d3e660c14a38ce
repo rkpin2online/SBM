@@ -1,0 +1,23 @@
+package com.rk.config;
+
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("RAM").password("{noop}SITA").authorities("ADIPURUS");
+		auth.inMemoryAuthentication().withUser("KRISHNA").password("{noop}RADHA").authorities("SUPRIMGOD");
+		auth.inMemoryAuthentication().withUser("SIVA").password("{noop}PARVATI").authorities("ADIUGI");
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// TODO Auto-generated method stub
+		super.configure(http);
+	}
+
+}
