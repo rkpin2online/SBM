@@ -1,4 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\RK\\git\\SpringBoot2SecurityJwtApp1\\.git;C\:\\Users\\RK\\git\\SpringBoot2SecurityJwtAp\\.git;E\:\\2.STS_WorkSpace\\03.Learn\\SBM\\SBSecurity3\\.git;E\:\\2.STS_WorkSpace\\03.Learn\\SBM\\SBSecurity1\\.git;E\:\\2.STS_WorkSpace\\03.Learn\\SBM\\SBSecurity2\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\RK\\git\\SpringBoot2SecurityJwtApp1\\.git;C\:\\Users\\RK\\git\\SpringBoot2SecurityJwtAp\\.git;SBSecurity3\\.git;SBSecurity1\\.git;SBSecurity2\\.git;
+GitRepositoriesView.GitDirectories=E\:\\2.STS_WorkSpace\\03.Learn\\SBM\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+RepositoryGroups.uuids=
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

@@ -1,0 +1,10 @@
+server:
+  port: 9090
+  
+spring:  application:    name: YML-FILE-APP
+
+app:
+  properties:
+      welcomeMsg: Welcome Mr.Rk.....!
+      greetMsg: Good Morning.....!!!
+      priceApiURL: http://www.nse.com/price/{name}  

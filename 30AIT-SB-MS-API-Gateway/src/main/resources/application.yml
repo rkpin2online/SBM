@@ -1,0 +1,14 @@
+server:
+  port: 3333
+spring:
+  application:
+    name: API_GATEWAY
+zuul:
+  prefix: /api
+  routes:
+    welcome:
+      path: /welcome/**
+      service-id: WELCOME_API
+    hello:
+      path: /hello/**
+      service-id: HELLO_API
